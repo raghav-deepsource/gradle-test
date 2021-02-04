@@ -24,10 +24,10 @@ jobs:
       run: curl https://deepsource.io/cli | sh
 
     - name: Test with Gradle
-      run: gradle test
+      run: gradle test -x :multiModule1:subMultiModuleWithErrors:test
 
     - name: Generate jacoco test report
-      run: gradle jacocoTestReport
+      run: gradle jacocoTestReport -x :multiModule1:subMultiModuleWithErrors:jacocoTestReport
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
