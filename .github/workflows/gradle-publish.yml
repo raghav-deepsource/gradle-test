@@ -27,7 +27,7 @@ jobs:
       run: gradle test -x :multiModule1:subMultiModuleWithErrors:test
 
     - name: Generate jacoco test report
-      run: gradle jacocoTestReport -x :multiModule1:subMultiModuleWithErrors:jacocoTestReport
+      run: gradle jacocoTestReport
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
