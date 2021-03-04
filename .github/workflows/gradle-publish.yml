@@ -22,9 +22,6 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Add deepsource cli
-      run: curl https://deepsource.io/cli | sh
-
     - name: Test with Gradle
       run: gradle test -x :multiModule1:subMultiModuleWithErrors:test
 
@@ -34,6 +31,8 @@ jobs:
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Upload report to deepsource
-      run: ./bin/deepsource report --analyzer "test-coverage" --key "java" --value-file build/jacocoXml
-      env:
-        DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+      uses: deepsourcelabs/test-coverage-action@master
+      with:
+        key: java
+        coverage-file: build/jacocoXml
+        dsn: ${{ secrets.DEEPSOURCE_DSN }}
