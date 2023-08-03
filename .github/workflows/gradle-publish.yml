@@ -27,6 +27,7 @@ jobs:
 
     - name: Generate jacoco test report
       run: gradle jacocoTestReport
+      
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
